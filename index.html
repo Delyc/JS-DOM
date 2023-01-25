@@ -141,10 +141,33 @@
             visibility: hidden;
             transition: all 0.1s ease-in-out;
         }
+
+        .music{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .para{
+            font-weight: bold;
+            font-size: 2rem;
+            width: 60%;
+        }
+
+        .head{
+            font-size: 3rem;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <p>1)</p>
+
+    <section class="music">
+       <h1 class="head">PLAYING MUSIC WITH JS</h1> 
+        <p class="para">On your keyboard, press any key that matches  those below to play that sound, and enjoy the music😁</p>
     <div class="flex gap">
         <div class="border p-20 text-center a">
             <p>A</p>
@@ -171,9 +194,14 @@
             <p>Note</p>
         </div>
     </div>
+</section>
     <hr/>
     <p>2)</p>
+    <section class="music">
+    <h1 class="head">JS WATCH</h1> 
+
     <div class="clock">
+        
         <div class="clock__face">
             <div class="clock__sec" id="clock__sec">
             </div>
@@ -183,8 +211,13 @@
             </div>
         </div>
     </div>
+</section>
     <hr/>
     <p>3)</p>
+
+    <section class="music">
+        <h1 class="head">PLAY WITH IMAGE</h1>
+    
     <div class="flex flex-col">
         <div>
             <label>Blur</label><br/>
@@ -199,9 +232,18 @@
             <img width="200px" id="img_tag"  onmouseover="rotateFunc(event)" src="https://interactive-examples.mdn.mozilla.net/media/examples/firefox-logo.svg" /> 
         </div>
     </div>
+</section>
     <hr/>
+    <section class="music">
+        <h1 class="head">PICK TIME</h1>
     <input type="time" onclick="text(event)" /> 
+
+    </section>
+    <hr/>
+
     <p>4)</p>
+    <section class="music">
+        <h1 class="head">HOVER ON THE IMAGE AND SEE THE MAGIC</h1>
     <div class="flexdivimg">
         <div class="divimg1" onmouseleave="onClickFlexResetWidth(`divimg1`)" onmouseover="onClickFlexWidth(`divimg1`)">
             <p class="title">Experience</p>
@@ -229,36 +271,41 @@
             <p class="footer">Today</p>
         </div>
     </div>
+</section>
+<section class="second-part">
     <section class="counter">
         <p class="counter__title">Counter</p>
     <p class="counter__res">0</p>
-    <button class="counter__remove" onclick="removeNumber()">-</button>
-    <button class="counter__set" onclick="reSetValue()">Reset</button>
-    <button class="counter__add" onclick="add()">+</button>
+
+    <div>
+        <button class="counter__remove" onclick="removeNumber()">-</button>
+        <button class="counter__set" onclick="reSetValue()">Reset</button>
+        <button class="counter__add" onclick="add()">+</button>
+    </div>
+  
     </section>
     
     <hr/>
     <section class="slider">
         <p class="slider__title">Slider</p><br/>
         <p class="slider__text"></p><br/>
-        <button class="slider__prev">
-            previous
-        </button>
-        <button class="slider__next">next</button>
+        <div>
+            <button class="slider__prev">
+                previous
+            </button>
+            <button class="slider__next">next</button>
+        </div>
+     
     </section>
     <hr/>
     <div class="menu">
-        <p class="menu-logo">LOGO</p>
-        <button class="menu-button">++</button>
+        <p class="menu-logo"></p>
+        <p class="menu-button"></p>
         <div class="menu-list">
-            <p>
-                profile
-            </p>
-            <p>
-                Logout
-            </p>
+           
         </div>
     </div>
+</section>
     <hr/>
     <hr/>
     <script src="./index.js"></script>

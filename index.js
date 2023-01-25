@@ -1,3 +1,6 @@
+
+
+
 document.addEventListener("keypress", (e) => {
   let note = document.querySelector(`.${e.key}`);
   note.classList.toggle("active");
@@ -174,3 +177,130 @@ let menu = document.querySelector('.menu-list')
 menuButton.addEventListener(('click'),(()=>{
     menu.classList.toggle("menu-show")
 }))
+
+
+const questions = [
+  {
+    id: 1,
+    question:
+      " Which of the following keywords is used to define a variable in Javascript?",
+    answer: "Both a and b",
+    options: ["var", "let", "Both a and b", "none above"],
+  },
+  {
+    id: 2,
+    question:
+      "Which of the following methods is used to access HTML elements using Javascript?",
+    answer: "Both A and B",
+    options: [
+      "getElementbyId()",
+      "getElementsByClassName()",
+      "Both A and B",
+    ],
+  },
+  {
+    id: 3,
+    question:
+      "Upon encountering empty statements, what does the Javascript Interpreter do?",
+    answer: "Ignores the statements",
+    options: [
+      "Throws an error",
+      "Ignores the statements",
+      "Gives a warning",
+      "None of the above",
+    ],
+  },
+  {
+    id: 4,
+    question: "How can a datatype be declared to be a constant type?",
+    answer: "const",
+    options: ["const", "var", "let", "constant"],
+  },
+];
+const quesD = document.createElement("ul");
+quesD.setAttribute("id", "questions");
+document.body.append(quesD);
+
+let activeQ = 0;
+quesD.style.listStyle = "none";
+const renderQs = (activeQ) => {
+  questions.forEach((a, index) => {
+    const questionItem = document.createElement("li");
+    if (activeQ === index) {
+      questionItem.style.opacity = "block";
+    } else {
+      questionItem.style.display = "none";
+    }
+
+    questionItem.innerText = a.question;
+    quesD.append(questionItem);
+
+    a.options.forEach((e) => {
+      const optionItem = document.createElement("div");
+
+      const radio = document.createElement("input");
+      radio.setAttribute("type", "radio");
+      radio.setAttribute("id", e + a.id);
+      radio.setAttribute("question-id", a.id);
+      radio.setAttribute("value", e);
+      radio.classList.add("option");
+      radio.setAttribute("name", a.id + "-question");
+      const label = document.createElement("label");
+      label.setAttribute("for", e + a.id);
+      label.innerHTML = e;
+      optionItem.append(radio);
+      optionItem.append(label);
+
+      questionItem.append(optionItem);
+    });
+  });
+
+  const nextBtn = document.querySelector("#next");
+  if (!questions[activeQ + 1]) {
+    nextBtn.innerText = "submit";
+  }
+
+  document.querySelectorAll("input").forEach((input) => {
+    input.addEventListener("change", () => {
+      const questionId = input.getAttribute("question-id");
+      const answer = input.getAttribute("value");
+      const nextBtn = document.querySelector("#next");
+
+      const Qindex = questions.findIndex(
+        (e) => e.id === Number(questionId)
+      );
+      console.log(Qindex);
+      questions[Qindex].user_answer = answer;
+      console.log(questions);
+      nextBtn.removeAttribute("disabled");
+    });
+  });
+};
+
+renderQs(activeQ);
+const nextBtn = document.createElement("button");
+nextBtn.setAttribute("id", "next");
+nextBtn.setAttribute("disabled", "");
+
+nextBtn.innerText = "next";
+document.body.append(nextBtn);
+
+const handleResults = (questions) => {
+  const passed = questions.filter(
+    (e) => e.user_answer === e.answer
+  ).length;
+  const total = questions.length;
+
+  alert(`you got ${passed} out of ${total}`);
+};
+
+nextBtn.addEventListener("click", () => {
+  if (questions[activeQ + 1]) {
+    quesD.innerHTML = "";
+    activeQ += 1;
+    renderQs(activeQ);
+    nextBtn.setAttribute("disabled", "");
+  } else {
+    handleResults(questions);
+  }
+});
