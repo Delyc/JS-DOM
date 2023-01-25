@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>JS 30:1</title>
+    <style>
+        .flex{
+            display: flex;
+            width: fit-content;
+            margin: auto;
+        }
+        .gap{
+            gap: 60px;
+        }
+        .border{
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+        .p-20{
+            padding: 35px;
+            cursor: pointer;
+        }
+        .text-center{
+            text-align: center;
+        }
+        .active{
+            transition: all 100ms;
+            background-color: #202124;
+            color: white;
+            transform: scale(1.2);
+        }
+        .clock{
+            background-color: red;
+            margin: auto;
+            width: 300px;
+            height:300px;
+            border: 10px solid #202124;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        .clock__sec{
+            width: 10px;
+            height: 20vh;
+            background-color: rebeccapurple;
+            position: absolute;
+            top:0;
+            bottom: 0;
+              transform: rotate(0deg);
+            transform-origin: bottom;
+        }
+        .clock__min{
+            width: 10px;
+            height: 20vh;
+            background-color: green;
+            position: absolute;
+            top:0;
+            bottom: 0;
+            transform: rotate(0deg);
+            transform-origin: bottom;
+        }
+        #blurImg{
+            background-color: red;
+            padding: 12px;
+            border-radius: 20px;
+            transition: all 0.4s ease-in-out;
+        }
+        .clock__hours{
+            width: 10px;
+            height: 20vh;
+            background-color: royalblue;
+            position: absolute;
+            top:0;
+            bottom: 0;
+            transform: rotate(0deg);
+            transform-origin: bottom;
+        }
+        #img_tag{
+            cursor:grab ;
+            transition: all 2s ease-in-out;
+        }
+        .flexdivimg{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        
+        }
+        .flexdivimg div{
+            height: 40vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.5s ease-in-out;
+            width: 15vh;
+            color: white;
+            font-weight: 700;
+        }
+        .divimg1{
+            background-image: url("https://i.stack.imgur.com/cEz3G.jpg");
+            background-position:top;
+            background-repeat:no-repeat;
+            background-size: cover;
+        }
+        .divimg2{
+            background-image: url("https://cdn3.vectorstock.com/i/1000x1000/48/52/cover-background-with-abstract-fire-vector-8404852.jpg");
+            background-position:top;
+            background-repeat:no-repeat;
+            background-size: cover;
+        }
+        .divimg3{
+            background-image: url("https://c4.wallpaperflare.com/wallpaper/305/547/705/facebook-cover-abstract-wallpaper-preview.jpg");
+            background-position:top;
+            background-repeat:no-repeat;
+            background-size: cover;
+        }
+        .divimg4{
+            background-image: url("https://c4.wallpaperflare.com/wallpaper/83/705/244/abstract-shapes-colorful-minimalism-wallpaper-preview.jpg");
+            background-position:top;
+            background-repeat:no-repeat;
+            background-size: cover;
+        }
+        .divimg5{
+            background-image: url("https://c4.wallpaperflare.com/wallpaper/167/899/648/colorful-abstract-digital-art-shapes-wallpaper-preview.jpg");
+            background-position:top;
+            background-repeat:no-repeat;
+            background-size: cover;
+        }
+        .middle{
+            font-size: 30px
+        }
+        .title,.footer{
+            font-size: 20px;
+            visibility: hidden;
+            transition: all 0.1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <p>1)</p>
+    <div class="flex gap">
+        <div class="border p-20 text-center a">
+            <p>A</p>
+            <p>Note</p>
+        </div>
+        <div class="border p-20 text-center b ">
+            <p>B</p>
+            <p>Note</p>
+        </div>
+        <div class="border p-20 text-center c">
+            <p>C</p>
+            <p>Note</p>
+        </div>
+        <div class="border p-20 text-center d">
+            <p>D</p>
+            <p>Note</p>
+        </div>
+        <div class="border p-20 text-center e">
+            <p>E</p>
+            <p>Note</p>
+        </div>
+        <div class="border p-20 text-center f">
+            <p>F</p>
+            <p>Note</p>
+        </div>
+    </div>
+    <hr/>
+    <p>2)</p>
+    <div class="clock">
+        <div class="clock__face">
+            <div class="clock__sec" id="clock__sec">
+            </div>
+            <div class="clock__min" id="clock__min">
+            </div>
+            <div class="clock__hours" id="clock__hours"> 
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <p>3)</p>
+    <div class="flex flex-col">
+        <div>
+            <label>Blur</label><br/>
+            <input type="range" id="blur" onchange="blurFunc()" name="blur" min="0" max="100" value="0"/> <br/>
+            <label>Space</label><br/>
+            <input type="range" id="Space" onchange="spaceFunc()" name="blur" min="0" max="200" value="0"/> <br/>
+            <label>Color</label><br/>
+            <input type="range" id="Color" onchange="colorFunc()" name="blur" min="0" max="100" value="0"/> <br/>
+        </div>
+
+        <div id="blurImg">
+            <img width="200px" id="img_tag"  onmouseover="rotateFunc(event)" src="https://interactive-examples.mdn.mozilla.net/media/examples/firefox-logo.svg" /> 
+        </div>
+    </div>
+    <hr/>
+    <input type="time" onclick="text(event)" /> 
+    <p>4)</p>
+    <div class="flexdivimg">
+        <div class="divimg1" onmouseleave="onClickFlexResetWidth(`divimg1`)" onmouseover="onClickFlexWidth(`divimg1`)">
+            <p class="title">Experience</p>
+            <p class="middle">It</p>
+            <p class="footer">Today</p>
+        </div>
+        <div class="divimg2" onmouseleave="onClickFlexResetWidth(`divimg2`)" onmouseover="onClickFlexWidth(`divimg2`)">
+            <p class="title">Experience</p>
+            <p class="middle">It</p>
+            <p class="footer">Today</p>
+        </div>
+        <div class="divimg3" onmouseleave="onClickFlexResetWidth(`divimg3`)" onmouseover="onClickFlexWidth(`divimg3`)">
+            <p class="title">Experience</p>
+            <p class="middle">It</p>
+            <p class="footer">Today</p>
+        </div>
+        <div class="divimg4" onmouseleave="onClickFlexResetWidth(`divimg4`)" onmouseover="onClickFlexWidth(`divimg4`)">
+            <p class="title">Experience</p>
+            <p class="middle">It</p>
+            <p class="footer">Today</p>
+        </div>
+        <div class="divimg5" onmouseleave="onClickFlexResetWidth(`divimg5`)" onmouseover="onClickFlexWidth(`divimg5`)">
+            <p class="title">Experience</p>
+            <p class="middle">It</p>
+            <p class="footer">Today</p>
+        </div>
+    </div>
+    <section class="counter">
+        <p class="counter__title">Counter</p>
+    <p class="counter__res">0</p>
+    <button class="counter__remove" onclick="removeNumber()">-</button>
+    <button class="counter__set" onclick="reSetValue()">Reset</button>
+    <button class="counter__add" onclick="add()">+</button>
+    </section>
+    
+    <hr/>
+    <section class="slider">
+        <p class="slider__title">Slider</p><br/>
+        <p class="slider__text"></p><br/>
+        <button class="slider__prev">
+            previous
+        </button>
+        <button class="slider__next">next</button>
+    </section>
+    <hr/>
+    <div class="menu">
+        <p class="menu-logo">LOGO</p>
+        <button class="menu-button">++</button>
+        <div class="menu-list">
+            <p>
+                profile
+            </p>
+            <p>
+                Logout
+            </p>
+        </div>
+    </div>
+    <hr/>
+    <hr/>
+    <script src="./index.js"></script>
+</body>
+</html>
