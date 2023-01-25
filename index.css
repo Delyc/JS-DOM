@@ -1,3 +1,8 @@
+body{font-family: 'Roboto', sans-serif;
+    color: white;
+    background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -6,6 +11,12 @@
     padding-right: 10rem;
     background-color: black;
     
+}
+.notes{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: 1px solid gray;
+    border-radius: 10px;
+    background-color: #243949;
 }
 .second-part{
     display: flex;
@@ -23,6 +34,7 @@
 
 .counter__title, .slider__title{
     font-size: 5rem;
+    font-weight: bold;
 }
 
 .counter__res{
@@ -31,8 +43,9 @@
 }
 
 .counter__add, .slider__prev, .slider__next{
-    background-color: blue;
-    
+background-color: #243949;   
+color: white; 
+border: 0;
     padding-left: 2rem;
     padding-right: 2rem;
     padding-top: 1rem;
@@ -41,8 +54,9 @@
 }
 
 .counter__set{
-    background-color: blue;
-    
+    background-color: #243949;
+    border: 0;
+    color: white;
     padding-left: 2rem;
     padding-right: 2rem;
     padding-top: 1rem;
@@ -51,7 +65,9 @@
 }
 
 .counter__remove{
-    background-color: blue;
+   background-color: #243949;
+   border: 0;
+   color: white;
     
     padding-left: 2rem;
     padding-right: 2rem;
@@ -68,5 +84,19 @@
 
 .slider__text{
     width: 30rem;
+    background-color: #243949;
+    padding: 2rem;
+    border-radius: 15px;
+    line-height: 30px;
+    letter-spacing: 2px;
 
+}
+
+
+.body{
+    background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
+}
+
+.body__head{
+    color: white;
 }
